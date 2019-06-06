@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../movies.service';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, MenuController } from '@ionic/angular';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class DiscoverPage implements OnInit {
   imageUrl = 'http://image.tmdb.org/t/p/w500';
 
 
-  constructor(public moviesService: MoviesService, private loadingController: LoadingController) { }
+  constructor(public moviesService: MoviesService, private loadingController: LoadingController, private menu: MenuController) { }
 
   ngOnInit() {
     this.getMovies();
@@ -63,6 +63,10 @@ export class DiscoverPage implements OnInit {
     } else {
       this.getAllMovies();
     }
+  }
+
+  onOpenMenu() {
+    this.menu.toggle();
   }
   /*public searchMovies(event){
     if (event.detail.value && event.detail.value.trim() !== '') {

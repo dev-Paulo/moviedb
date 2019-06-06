@@ -1,0 +1,7 @@
+{
+  "appId": "com.moviedbtest",
+  "appName": "MovieDBTest",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

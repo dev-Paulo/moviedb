@@ -5,8 +5,9 @@
 export const environment = {
   production: false,
   apiUrl: 'https://api.themoviedb.org/3/',
-  apiKey: '2a6feadc6ed809a90e8e3b1fea92835a'
-}
+  apiKey: '2a6feadc6ed809a90e8e3b1fea92835a',
+  firebaseAPIKey: 'AIzaSyAeLM3Ol9dFzZi9ZqNxERaf5xsXZFuJ6bs'
+};
 
 /*
  * For easier debugging in development mode, you can import the following file

@@ -45,7 +45,8 @@ const routes: Routes = [
         path: '',
         redirectTo: './moviedb/tabs/discover',
         pathMatch: 'full'
-    }
+    },  { path: 'movie-detail', loadChildren: './discover/movie-detail/movie-detail.module#MovieDetailPageModule' }
+
 ];
 
 @NgModule({

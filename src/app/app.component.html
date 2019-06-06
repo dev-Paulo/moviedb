@@ -1,3 +1,29 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+    <ion-menu side="start">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>
+             MovieDBTest
+            </ion-title>
+          </ion-toolbar>
+        </ion-header>
+    
+        <ion-content>
+          <ion-list>
+            <ion-menu-toggle>
+              <ion-item lines="none" routerLink="/moviedb/tabs/discover">
+                <ion-icon color="secondary" name="search" slot="start"></ion-icon>
+                <ion-label>Discover Movies</ion-label>
+              </ion-item>
+            </ion-menu-toggle>         
+            <ion-menu-toggle>
+              <ion-item lines="none" (click)="onLogout()" button>
+                <ion-icon color="secondary" name="exit" slot="start"></ion-icon>
+                <ion-label>Logout</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-list>
+        </ion-content>
+      </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
 </ion-app>
