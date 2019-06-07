@@ -6,7 +6,9 @@ import { User } from './user.model';
 import { map, tap } from 'rxjs/operators';
 import { Plugins } from '@capacitor/core';
 
+// tslint:disable-next-line: no-trailing-whitespace
 export interface AuthResponseData {  
+  kind: string;
   idToken: string;
   email: string;
   refreshToken: string;
@@ -79,7 +81,7 @@ export class AuthService implements OnDestroy {
         parsedData.email,
         parsedData.token,
         expirationTime);
-        return user;
+      return user;
     }),
     tap(user => {
       if (user) {
@@ -94,16 +96,16 @@ export class AuthService implements OnDestroy {
   }
 
   signup(email: string, password: string) {
-    return this.http.post(`https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=
+    return this.http.post<AuthResponseData>(`https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=
     ${environment.firebaseAPIKey}`,
-    { email: email, password: password, returSecureToken: true }
+    { email, password, returnSecureToken: true }
     ).pipe(tap(this.setUserData.bind(this)));
   }
 
   login(email: string, password: string) {
     return this.http.post<AuthResponseData>(
       `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${environment.firebaseAPIKey}`,
-      { email: email, password: password, returnSecureToken: true }
+      { email, password, returnSecureToken: true }
     ).pipe(tap(this.setUserData.bind(this)));
   }
 
@@ -145,10 +147,10 @@ export class AuthService implements OnDestroy {
 
   private storeAuthData(userId: string, token: string, tokenExpirationDate: string, email: string) {
     const data = JSON.stringify({
-      userId: userId,
-      token: token,
-      tokenExpirationDate: tokenExpirationDate,
-      email: email
+      userId,
+      token,
+      tokenExpirationDate,
+      email
     });
     Plugins.Storage.set({
       key: 'authData',

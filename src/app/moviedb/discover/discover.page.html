@@ -9,7 +9,7 @@
 
 <ion-content padding>
     <ion-searchbar animated="true" [value]="query" (ionChange)="setSearchbarValue($event)"></ion-searchbar>
-    <ion-card *ngFor="let movie of movies"> 
+    <ion-card *ngFor="let movie of movies"  [routerLink]="['/', 'moviedb', 'tabs', 'discover', movie.id]"> 
         <ion-img src="{{imageUrl}}{{movie.backdrop_path}}"></ion-img>    
         <ion-card-header>
           <ion-card-subtitle><ion-icon color="warning" name="star"></ion-icon>{{movie.vote_average}}</ion-card-subtitle>

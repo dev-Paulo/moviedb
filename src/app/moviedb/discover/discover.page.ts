@@ -24,10 +24,10 @@ export class DiscoverPage implements OnInit {
     this.getMovies();
   }
 
-  async getAllMovies() { 
+  async getAllMovies() {
     this.isLoading = true;
     this.moviesService.getAllMovies(this.query).subscribe(all => {
-      this.movies = all.results;      
+      this.movies = all.results;
     });
     this.loadingController.create({keyboardClose: true,
     message: 'Getting movies for you...'
@@ -42,8 +42,8 @@ export class DiscoverPage implements OnInit {
 
   getMovies() {
     this.isLoading = true;
-    this.moviesService.getMovies().subscribe(movie => {       
-      this.movies = movie.results;     
+    this.moviesService.getMovies().subscribe(movie => {
+      this.movies = movie.results;
     });
     this.loadingController.create({keyboardClose: true,
       message: 'Getting movies for you...'
@@ -57,7 +57,7 @@ export class DiscoverPage implements OnInit {
   }
 
   setSearchbarValue(event) {
-    this.query = event.detail.value;  
+    this.query = event.detail.value;
     if (this.query === '') {
       this.getMovies();
     } else {

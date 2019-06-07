@@ -15,6 +15,10 @@ const routes: Routes = [
                         path: '',
                         loadChildren: './discover/discover.module#DiscoverPageModule'
                     },
+                    {
+                        path: ':movieId',
+                        loadChildren: './discover/movie-detail/movie-detail.module#MovieDetailPageModule'
+                    }
                 ]
             },
             {
@@ -23,6 +27,7 @@ const routes: Routes = [
                     {
                         path: '',
                         loadChildren: './library/library.module#LibraryPageModule'
+// tslint:disable-next-line: whitespace
                     },]
             },
             {
@@ -45,7 +50,8 @@ const routes: Routes = [
         path: '',
         redirectTo: './moviedb/tabs/discover',
         pathMatch: 'full'
-    },  { path: 'movie-detail', loadChildren: './discover/movie-detail/movie-detail.module#MovieDetailPageModule' }
+    },
+  { path: 'movie-detail', loadChildren: './discover/movie-detail/movie-detail.module#MovieDetailPageModule' }
 
 ];
 
