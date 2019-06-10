@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MoviesService } from '../../movies.service';
 import { LoadingController, MenuController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { Movie } from 'src/app/models/movie';
+import { Subscription } from 'rxjs';
+
 
 
 @Component({
@@ -8,21 +12,27 @@ import { LoadingController, MenuController } from '@ionic/angular';
   templateUrl: './discover.page.html',
   styleUrls: ['./discover.page.scss'],
 })
-export class DiscoverPage implements OnInit {
+export class DiscoverPage implements OnInit, OnDestroy {
 
 
   public isLoading = false;
+  public id = '';
   public query = '';
   public movies = [];
   public filteredMovies = [...this.movies];
   imageUrl = 'http://image.tmdb.org/t/p/w500';
+  private movieSub: Subscription;
 
 
-  constructor(public moviesService: MoviesService, private loadingController: LoadingController, private menu: MenuController) { }
+  constructor(
+    public router: Router,
+    public moviesService: MoviesService,
+    private loadingController: LoadingController,
+    private menu: MenuController) { }
 
   ngOnInit() {
     this.getMovies();
-  }
+      }
 
   async getAllMovies() {
     this.isLoading = true;
@@ -37,7 +47,7 @@ export class DiscoverPage implements OnInit {
         this.isLoading = false;
         loadingEl.dismiss();
       });
-    });
+    });    
   }
 
   getMovies() {
@@ -68,14 +78,10 @@ export class DiscoverPage implements OnInit {
   onOpenMenu() {
     this.menu.toggle();
   }
-  /*public searchMovies(event){
-    if (event.detail.value && event.detail.value.trim() !== '') {
-      this.movies = this.filteredMovies ;
-      this.movies = this.movies.filter((item) => {
-        return (item.title.toLowerCase().indexOf(event.detail.value.toLowerCase()) > -1);
-      });
-    } else {
-      this.movies = this.filteredMovies ;
+
+  ngOnDestroy() {
+    if (this.movieSub) {
+      this.movieSub.unsubscribe();
     }
-  }*/
+  }
 }

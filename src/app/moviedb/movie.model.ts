@@ -1,8 +1,8 @@
-export interface IMovie {
-    id: number;  
-    backdrop_path: string;   
+export class Movie {
+    id: number;
+    backdropPath: string;   
     overview: string;
-    release_date: number;
+    releaseDate: number;
     title: string;
-    vote_average: number;
+    voteAverage: number;
 }

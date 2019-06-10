@@ -14,7 +14,7 @@ const routes: Routes = [
                     {
                         path: '',
                         loadChildren: './discover/discover.module#DiscoverPageModule'
-                    },
+                    },                    
                     {
                         path: ':movieId',
                         loadChildren: './discover/movie-detail/movie-detail.module#MovieDetailPageModule'
@@ -41,18 +41,16 @@ const routes: Routes = [
             },
             {
                 path: '',
-                redirectTo: './moviedb/tabs/discover',
+                redirectTo: '/moviedb/tabs/discover',
                 pathMatch: 'full'
             }
         ]
     },
     {
         path: '',
-        redirectTo: './moviedb/tabs/discover',
+        redirectTo: '/moviedb/tabs/discover',
         pathMatch: 'full'
     },
-  { path: 'movie-detail', loadChildren: './discover/movie-detail/movie-detail.module#MovieDetailPageModule' }
-
 ];
 
 @NgModule({
